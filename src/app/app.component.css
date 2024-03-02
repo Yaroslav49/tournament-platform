@@ -1,0 +1,23 @@
+h1, h2{
+    color:navy;
+    font-size: 300%;
+}
+p{
+    font-family: Arial;
+    font-size: 200%;
+}
+input{
+    font-family: Arial;
+    font-size: 100%;
+    border-radius: 1%;
+}
+button{
+    font-family: Arial;
+    font-size: 200%;
+    border-radius: 10px;
+    background-color: rgb(198, 218, 255);
+}
+.creatingTournamentBlock {
+    text-align: center;
+    width: 100%;
+}

@@ -1,0 +1,23 @@
+<div class="creatingTournamentBlock">
+    <h1>Создание турнира</h1>
+    <p>
+        <label>Название: </label>
+        <input [(ngModel)]="nameTournament" placeholder="введите название турнира">
+    </p>
+    @for (playerName of players; track playerName) {
+        <p>
+            <label>Игрок {{$index + 1}}: {{playerName}}</label>
+        </p>
+    }
+    <p>
+        <label>Игрок {{countPlayers + 1}}: </label>
+        <input [(ngModel)]="namePlayer" placeholder="введите имя игрока">
+    </p>
+    <div>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button (click)="addPlayer(namePlayer)">Добавить игрока</button>
+    </div>
+    <div>
+        <button (click)="createTournament(nameTournament, players)">Создать</button>
+    </div>
+</div>
