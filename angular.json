@@ -1,7 +1,7 @@
 {
   "version": 1,
   "projects": {
-    "helloapp": {
+    "turnirs": {
       "projectType": "application",
       "root": "",
       "sourceRoot": "src",
@@ -9,24 +9,65 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/helloapp",
+            "outputPath": "dist/turnirs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.json",
-            "aot": true
-          }
+            "aot": true,
+            "styles": [
+              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "src/styles.css"
+            ]
+          },
+          "configurations": {
+            "dev": {
+              "fileReplacements": [
+              {
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.dev.ts"
+              }
+              ]
+            },
+            "stage": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stage.ts"
+                }
+                ]
+            },
+            "prod": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+                ]
+            }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "helloapp:build"
+            "browserTarget": "turnirs:build"
+          },
+          "configurations": {
+          "dev": {
+          "browserTarget": "turnirs:build:dev"
+          },
+          "stage": {
+          "browserTarget": "turnirs:build:stage"
+          },
+          "prod": {
+          "browserTarget": "turnirs:build:prod"
           }
-        }
+          }
+         }
       }
     }
   },
   "cli": {
     "analytics": false
   }
-}
+}}

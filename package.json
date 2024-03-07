@@ -6,7 +6,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build"
+    "build": "ng build",
+    "start:dev": "ng serve --configuration dev",
+    "start:stage": "ng serve --configuration stage",
+    "start:prod": "ng serve --configuration prod",
+    "build:dev": "ng build --configuration dev",
+    "build:stage": "ng build --configuration stage",
+    "build:prod": "ng build --configuration prod"
   },
   "dependencies": {
     "@angular/common": "~17.0.0",
