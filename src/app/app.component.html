@@ -1,30 +1,65 @@
 <div class="creatingTournamentBlock">
     <h1>Создание турнира</h1>
-    <p>
-        <label>Название: </label>
-        <input [(ngModel)]="nameTournament" placeholder="введите название турнира">
-    </p>
-    @for (playerName of players; track playerName) {
+    <form class="b-form" [formGroup]="inputForm">
         <p>
-            <label>Игрок {{$index + 1}}: {{playerName}}</label>
-        </p>
-    }
-    <p>
-        <label>Игрок {{countPlayers + 1}}: </label>
-        <input [(ngModel)]="namePlayer" placeholder="введите имя игрока">
-    </p>
-    <div>
-        <button
-            tuiButton
-            type="button"
-            class="tui-space_right-3 tui-space_bottom-3"
-            [icon]="icon"
-            (click)="addPlayer(namePlayer)"
+            <tui-input formControlName="nameTournament"
             >
-            Добавить игрока
-        </button>
-    </div>
-    <div>
-        <button (click)="createTournament(nameTournament, players)">Создать</button>
-    </div>
+                Название турнира
+            </tui-input>
+            <tui-error
+                formControlName="nameTournament"
+                [error]="[] | tuiFieldError | async"
+            ></tui-error>
+        </p>
+        <p>
+            <tui-input formControlName="description"
+            >
+                Краткое описание
+            </tui-input>
+        </p>
+        <p>
+            <tui-input-date-time formControlName="datetime"
+            >
+                Дата и время начала
+            </tui-input-date-time>
+        </p>
+        <p>
+            <tui-input-number formControlName="maxCountParticipants"
+                [min]="2"
+                [step]="1"
+            >
+                Количество участников
+            </tui-input-number>
+        </p>
+    </form>
+    <h3 *ngFor="let playerName of players; index as i">
+        Игрок {{i + 1}}: {{playerName}}
+    </h3>
+    <h3>Игрок {{countPlayers + 1}}: </h3>
+    <form [formGroup]="inputForm">
+        <tui-input formControlName="namePlayer">
+            Имя
+            <input tuiTextfield />
+        </tui-input>
+    </form>
+    <p>
+      <button
+          tuiButton
+          type="button"
+          class="tui-space_right-3 tui-space_bottom-3"
+          (click)="addPlayer()"
+          >
+          Добавить игрока
+      </button>
+    </p>
+  <p>
+      <button
+          tuiButton
+          type="button"
+          class="tui-space_right-3 tui-space_bottom-3"
+          (click)="createTournament()"
+          >
+          Создать
+      </button>
+  </p>
 </div>

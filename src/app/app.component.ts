@@ -1,26 +1,48 @@
-import { NumberSymbol } from "@angular/common";
-import { Component } from "@angular/core";
-import {FormsModule} from "@angular/forms";
-import {TuiRootModule} from '@taiga-ui/core';
-     
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {TuiDay, TuiTime} from '@taiga-ui/cdk';
+import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
+
 @Component({
-    selector: "my-app",
-    standalone: true,
-    imports: [FormsModule],
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.less']
+	selector: "app-root",
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.css'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	providers: [
+        {
+            provide: TUI_VALIDATION_ERRORS,
+            useValue: {
+                required: 'Необходимо заполнить данное поле'
+            },
+        },
+    ],
 })
-export class AppComponent { 
-    nameTournament: string = "";
-    namePlayer: string = "";
-    countPlayers: number = 0;
-    players: string[] = [];
-    createTournament(name: string, players: string[]): void {
-        
-    }
-    addPlayer(namePlayer: string): void {
-        this.players.push(namePlayer);
-        this.countPlayers += 1;
-        this.namePlayer = "";
-    }
+export class AppComponent {
+	title = 'tournamentPlatform';
+	countPlayers: number = 0;
+	players: string[] = [];
+
+	inputForm = new FormGroup(
+		{
+			nameTournament: new FormControl('', [Validators.required]),
+			description: new FormControl('', {nonNullable: true}),
+			datetime: new FormControl([new TuiDay(2024, 2, 18), new TuiTime(12, 30)]),
+			maxCountParticipants: new FormControl('2', {nonNullable: true}),
+			namePlayer: new FormControl('', {nonNullable: true})
+		}, control =>
+		Object.values((control as FormGroup).controls).every(({valid}) => valid)
+			? null
+			: {other: 'Необходимо заполнить поле'}
+	);
+
+	createTournament(): void {
+		
+	}
+
+	addPlayer(): void {
+		let inputNamePlayer = this.inputForm.controls['namePlayer']
+		this.players.push(inputNamePlayer.value);
+		this.countPlayers += 1;
+		inputNamePlayer.setValue("");
+	}
 }
