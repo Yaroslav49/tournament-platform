@@ -5,17 +5,21 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterOutlet } from "@angular/router";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StartPageComponent } from './start-page.component';
+import { CreatingTournamentComponent } from './creating-tournament.component';
 
 @NgModule({
-  declarations: [ AppComponent],
+  declarations: [ AppComponent, StartPageComponent, CreatingTournamentComponent ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    RouterOutlet,
       BrowserAnimationsModule,
       TuiRootModule,
       TuiDialogModule,
