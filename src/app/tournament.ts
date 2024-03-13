@@ -3,9 +3,9 @@ export class Tournament{
 	description: string;
 	dateTime: string;
 
-	constructor(name: string, description: string, dateTime: string,) {
-		this.name = name;
-		this.description = description;
-		this.dateTime = dateTime;
+	constructor(nameTournament: string, descTournament: string) {
+		this.name = nameTournament;
+		this.description = descTournament;
+		this.dateTime = "";
 	}
 }

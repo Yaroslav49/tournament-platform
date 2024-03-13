@@ -19,9 +19,6 @@ export class StartPageComponent implements OnInit {
 	constructor(private httpService: HttpService){}
 
     ngOnInit(){
-        this.httpService.getTournaments().subscribe({
-			next: (data: any) => this.tournaments=data,
-			error: err => console.error('Observable emitted an error: ' + err)
-		});
+        this.httpService.getTournaments().subscribe({next:(data: Tournament[]) => this.tournaments=data});
     }
 }
