@@ -25,14 +25,22 @@
         </p>
         <p>
             <tui-input-number formControlName="maxCountParticipants"
-                [min]="2"
-                [step]="1"
+                [min]=2
+                [step]=2
             >
                 Количество участников
             </tui-input-number>
         </p>
+        <p>
+            <tui-input-number formControlName="prizeFund"
+                [min]=0
+                [step]=100
+            >
+                Призовой фонд
+            </tui-input-number>
+        </p>
     </form>
-    <h3 *ngFor="let playerName of players; index as i">
+    <!--h3 *ngFor="let playerName of players; index as i">
         Игрок {{i + 1}}: {{playerName}}
     </h3>
     <h3>Игрок {{countPlayers + 1}}: </h3>
@@ -51,7 +59,7 @@
           >
           Добавить игрока
       </button>
-    </p>
+    </p-->
   <p>
       <button
           tuiButton

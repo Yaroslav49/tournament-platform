@@ -13,9 +13,8 @@ export class HttpService{
       
     getTournaments() : Observable<Tournament[]>{
         return this.http.get("http://158.160.149.44:8080/api/tournaments").pipe(map((data:any)=>{
-            //let tournamentList = data;
             return data.map(function(tournament: any): Tournament {
-                return new Tournament(tournament.nameTournament, tournament.descTournament);
+                return new Tournament(tournament.nameTournament, tournament.descTournament, tournament.poolTournament, tournament.players.length, tournament.maxPlayersTournament);
               });
         }));
     }

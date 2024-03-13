@@ -27,7 +27,8 @@ export class CreatingTournamentComponent {
 			nameTournament: new FormControl('', [Validators.required]),
 			description: new FormControl('', {nonNullable: true}),
 			datetime: new FormControl([new TuiDay(2024, 2, 18), new TuiTime(12, 30)]),
-			maxCountParticipants: new FormControl('2', {nonNullable: true}),
+			maxCountParticipants: new FormControl(2, {nonNullable: true}),
+			prizeFund: new FormControl(0, {nonNullable: true}),
 			namePlayer: new FormControl('', {nonNullable: true})
 		}, control =>
 		Object.values((control as FormGroup).controls).every(({valid}) => valid)
@@ -39,10 +40,10 @@ export class CreatingTournamentComponent {
 		
 	}
 
-	addPlayer(): void {
+	/*addPlayer(): void {
 		let inputNamePlayer = this.inputForm.controls['namePlayer']
 		this.players.push(inputNamePlayer.value);
 		this.countPlayers += 1;
 		inputNamePlayer.setValue("");
-	}
+	}*/
 }

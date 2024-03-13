@@ -25,6 +25,18 @@
                 >
                     Начало
                 </th>
+                <th 
+                    tuiTh 
+                    [resizable]="true"
+                >
+                    Призовой фонд
+                </th>
+                <th 
+                    tuiTh 
+                    [resizable]="true"
+                >
+                    Кол-во участников
+                </th>
             </tr>
         </thead>
         <tbody
@@ -60,9 +72,22 @@
                     {{ tournament.dateTime }}
                 </td>
                 <td
-                    *tuiCell="'actions'"
+                    *tuiCell="'dateTime'"
                     tuiTd
                 >
+                    {{ tournament.dateTime }}
+                </td>
+                <td
+                    *tuiCell="'prizeFund'"
+                    tuiTd
+                >
+                    {{ tournament.prizeFund + " ₽" }}
+                </td>
+                <td
+                    *tuiCell="'countPlayers'"
+                    tuiTd
+                >
+                    {{ tournament.countPlayers }}
                 </td>
             </tr>
         </tbody>

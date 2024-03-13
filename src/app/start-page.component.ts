@@ -10,9 +10,9 @@ import { Tournament } from './tournament';
 export class StartPageComponent implements OnInit {
   	countTournaments: number = 3;
 	tournaments: Tournament[] = [
-		{ name: "Чемпионат по доте", description: "Сразитесь в легендарном поединке с лучшими игроками региона", dateTime: "12.03.2024 10:00" },
-		{ name: "Турнир по CS:GO", description: "Сразитесь в легендарном поединке с лучшими игроками региона", dateTime: "13.03.2024 10:00" },
-		{ name: "Соревнование по шахматам", description: "Сразитесь в легендарном поединке с лучшими игроками региона", dateTime: "15.03.2024 9:00" },
+		{ name: "Чемпионат по доте", description: "Сразитесь в легендарном поединке с лучшими игроками региона", dateTime: "12.03.2024 10:00", prizeFund: 100, countPlayers: "0 / 12" },
+		{ name: "Турнир по CS:GO", description: "Сразитесь в легендарном поединке с лучшими игроками региона", dateTime: "13.03.2024 10:00", prizeFund: 100, countPlayers: "0 / 12" },
+		{ name: "Соревнование по шахматам", description: "Сразитесь в легендарном поединке с лучшими игроками региона", dateTime: "15.03.2024 9:00", prizeFund: 100, countPlayers: "0 / 12" },
 	];
 	readonly columns = Object.keys(this.tournaments[0]);
 	
