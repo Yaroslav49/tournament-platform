@@ -35,6 +35,15 @@
                     <ng-template #elseBlock> </ng-template>
                 </div>
             </div>
+            <p>
+                <button
+                    tuiButton
+                    type="button"
+                    class="tui-space_right-3 tui-space_bottom-3"
+                    >
+                    Редактировать
+                </button>
+            </p>
           </ng-template>
         </tui-accordion-item>
     </tui-accordion>
@@ -54,7 +63,7 @@
             type="button"
             class="tui-space_right-3 tui-space_bottom-3"
             >
-            Редактировать
+            Добавить
         </button>
     </p>
     <p>
@@ -62,6 +71,7 @@
             tuiButton
             type="button"
             class="tui-space_right-3 tui-space_bottom-3"
+            routerLink="/home"
             >
             К списку турниров
         </button>

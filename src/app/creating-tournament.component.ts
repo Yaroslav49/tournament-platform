@@ -2,6 +2,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
+import {HttpService} from "./http.service"
+import {Tournament} from './tournament';
 
 @Component({
 	selector: "creating-tournament.component",
@@ -35,8 +37,17 @@ export class CreatingTournamentComponent {
 			: {other: 'Необходимо заполнить поле'}
 	);
 
+	constructor(private httpService: HttpService){}
+
 	createTournament(): void {
-		
+		this.httpService.postTournament({
+			name: String(this.inputForm.controls['nameTournament'].value),
+			description: this.inputForm.controls['description'].value,
+			dateTime: "12.03.2024 10:00",
+			prizeFund: Number(this.inputForm.controls['prizeFund'].value),
+			countPlayers: 0,
+			maxPlayers: Number(this.inputForm.controls['maxCountParticipants'].value),
+		})
 	}
 
 	/*addPlayer(): void {

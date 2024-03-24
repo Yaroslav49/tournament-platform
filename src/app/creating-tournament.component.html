@@ -61,21 +61,29 @@
       </button>
     </p-->
   <p>
-      <button
-          tuiButton
-          type="button"
-          class="tui-space_right-3 tui-space_bottom-3"
-          (click)="createTournament()"
-          >
-          Создать
-      </button>
-      <button
-          tuiButton
-          type="button"
-          class="tui-space_right-3 tui-space_bottom-3"
-          routerLink="/home"
-          >
-          Отмена
-      </button>
+        <button *ngIf="!inputForm.invalid"
+            tuiButton
+            type="button"
+            class="tui-space_right-3 tui-space_bottom-3"
+            (click)="createTournament()"
+            >
+            Создать
+        </button>
+        <button *ngIf="inputForm.invalid"
+            tuiButton
+            type="button"
+            class="tui-space_right-3 tui-space_bottom-3"
+            [disabled]="true"
+            >
+            Создать
+        </button>
+    <button
+        tuiButton
+        type="button"
+        class="tui-space_right-3 tui-space_bottom-3"
+        routerLink="/home"
+        >
+        Отмена
+    </button>
   </p>
 </div>

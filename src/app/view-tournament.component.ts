@@ -19,7 +19,7 @@ export class ViewTournamentComponent {
 	//для сетки
   	countColumns: number = 4;
     participants: String[] = [
-        "Петя", "Петя", "Петя", "Петя", "Петя", "Петя", "Петя", "Петя"
+        "Петя", "Вася", "Дима", "Аня", "Таня", "Ваня", "Гриша", "Коля"
     ];
 	treeList: number[] = this.createTreeList(8);
 

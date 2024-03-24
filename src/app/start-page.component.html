@@ -41,7 +41,6 @@
         </thead>
         <tbody
             tuiTbody
-            [data]="tournaments"
         >
             <tr
                 *ngFor="let tournament of tournaments"
@@ -72,12 +71,6 @@
                     {{ tournament.dateTime }}
                 </td>
                 <td
-                    *tuiCell="'dateTime'"
-                    tuiTd
-                >
-                    {{ tournament.dateTime }}
-                </td>
-                <td
                     *tuiCell="'prizeFund'"
                     tuiTd
                 >
@@ -87,7 +80,7 @@
                     *tuiCell="'countPlayers'"
                     tuiTd
                 >
-                    {{ tournament.countPlayers }}
+                    {{ tournament.countPlayers.toString() + " / " + tournament.maxPlayers.toString() }}
                 </td>
             </tr>
         </tbody>

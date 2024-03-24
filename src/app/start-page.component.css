@@ -6,3 +6,18 @@ h1, h3 {
     width:50%;
     margin:auto;
 }
+
+td,
+th {
+    white-space: nowrap;
+    border-color: transparent;
+    border-right-color: var(--tui-base-04);
+}
+
+tr:nth-child(odd) td {
+    background: var(--tui-base-02);
+}
+ 
+tbody {
+    border-color: transparent;
+}
