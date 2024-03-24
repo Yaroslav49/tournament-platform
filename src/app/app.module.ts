@@ -1,5 +1,5 @@
 import { TuiRootModule, TuiDialogModule, TuiAlertModule, TuiButtonModule, TuiLabelModule, TuiErrorModule, TuiLinkModule} from "@taiga-ui/core";
-import {TuiInputModule, TuiInputDateTimeModule, TuiInputNumberModule, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiInputModule, TuiInputDateTimeModule, TuiInputNumberModule, TuiFieldErrorPipeModule, TuiAccordionModule} from '@taiga-ui/kit';
 import {TuiTableModule} from '@taiga-ui/addon-table';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -14,9 +14,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StartPageComponent } from './start-page.component';
 import { CreatingTournamentComponent } from './creating-tournament.component';
+import { ViewTournamentComponent } from "./view-tournament.component";
 
 @NgModule({
-  declarations: [ AppComponent, StartPageComponent, CreatingTournamentComponent ],
+  declarations: [ AppComponent, StartPageComponent, CreatingTournamentComponent, ViewTournamentComponent ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -37,7 +38,8 @@ import { CreatingTournamentComponent } from './creating-tournament.component';
     TuiErrorModule,
     TuiFieldErrorPipeModule,
     TuiTableModule,
-    TuiLinkModule
+    TuiLinkModule,
+    TuiAccordionModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

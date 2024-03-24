@@ -51,10 +51,10 @@
                     *tuiCell="'name'"
                     tuiTd
                 >
-                    <!-- потом сменить routerLink на страницу тунира по id-->
                     <a
-                        routerLink="/create"
+                        routerLink="/open"
                         tuiLink
+                        (click)="createTreeList(8)"
                     >
                         {{ tournament.name }}
                     </a>

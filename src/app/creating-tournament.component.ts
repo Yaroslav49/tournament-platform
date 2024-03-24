@@ -28,8 +28,7 @@ export class CreatingTournamentComponent {
 			description: new FormControl('', {nonNullable: true}),
 			datetime: new FormControl([new TuiDay(2024, 2, 18), new TuiTime(12, 30)]),
 			maxCountParticipants: new FormControl(2, {nonNullable: true}),
-			prizeFund: new FormControl(0, {nonNullable: true}),
-			namePlayer: new FormControl('', {nonNullable: true})
+			prizeFund: new FormControl(0, {nonNullable: true})
 		}, control =>
 		Object.values((control as FormGroup).controls).every(({valid}) => valid)
 			? null

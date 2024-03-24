@@ -14,6 +14,7 @@ export class StartPageComponent implements OnInit {
 		{ name: "Турнир по CS:GO", description: "Сразитесь в легендарном поединке с лучшими игроками региона", dateTime: "13.03.2024 10:00", prizeFund: 100, countPlayers: "0 / 12" },
 		{ name: "Соревнование по шахматам", description: "Сразитесь в легендарном поединке с лучшими игроками региона", dateTime: "15.03.2024 9:00", prizeFund: 100, countPlayers: "0 / 12" },
 	];
+	treeList: number[] = [];
 	readonly columns = Object.keys(this.tournaments[0]);
 	
 	constructor(private httpService: HttpService){}
@@ -21,4 +22,19 @@ export class StartPageComponent implements OnInit {
     ngOnInit(){
         this.httpService.getTournaments().subscribe({next:(data: Tournament[]) => this.tournaments=data});
     }
+
+	bypass(n: number): void {
+		if (n > 1) {
+			this.bypass(n-1);
+			this.treeList.push(n);
+			this.bypass(n-1);
+		} else {
+			this.treeList.push(1);
+		}
+	}
+	createTreeList(size: number): number[] {
+		this.treeList = [];
+		this.bypass(size);
+		return this.treeList;
+	}
 }

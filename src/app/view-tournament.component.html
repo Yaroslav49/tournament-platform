@@ -1,0 +1,69 @@
+<div class="viewTournamentBlock">
+    <h1>
+        {{ nameTournament }}
+    </h1>
+    <h3>
+        {{ description }}
+    </h3>
+    <h3>
+        Начало: {{ datetime }}
+    </h3>
+    <tui-accordion class="container">
+        <tui-accordion-item>
+          Участники
+          <ng-template tuiAccordionItemContent>
+            <ol>
+                <li
+                    *ngFor="let participant of participants; let i = index"
+                >
+                    {{i + 1}}. {{participant}}
+                </li>
+            </ol>
+          </ng-template>
+        </tui-accordion-item>
+        <tui-accordion-item>
+          Турнирная сетка
+          <ng-template tuiAccordionItemContent>
+            <div #content
+                class="tournament-grid"
+                *ngFor="let participant of createRange(16); let i = index"
+            >
+                <div
+                    *ngFor="let item of createRange(4); index as j"
+                >
+                    <div class="participant" *ngIf="j+1 == treeList[i]; else elseBlock"> {{ participants[0] }} </div>
+                    <ng-template #elseBlock> </ng-template>
+                </div>
+            </div>
+          </ng-template>
+        </tui-accordion-item>
+    </tui-accordion>
+
+    <h3>
+        Добавить участника:
+    </h3>
+    <p>
+        <tui-input formControlName="newParticipant"
+        >
+            Имя
+        </tui-input>
+    </p>
+    <p>
+        <button
+            tuiButton
+            type="button"
+            class="tui-space_right-3 tui-space_bottom-3"
+            >
+            Редактировать
+        </button>
+    </p>
+    <p>
+        <button
+            tuiButton
+            type="button"
+            class="tui-space_right-3 tui-space_bottom-3"
+            >
+            К списку турниров
+        </button>
+    </p>
+</div>
