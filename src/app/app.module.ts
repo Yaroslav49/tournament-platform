@@ -1,4 +1,4 @@
-import { TuiRootModule, TuiDialogModule, TuiAlertModule, TuiButtonModule, TuiLabelModule, TuiErrorModule, TuiLinkModule} from "@taiga-ui/core";
+import {TuiRootModule, TuiDialogModule, TuiAlertModule, TuiButtonModule, TuiLabelModule, TuiErrorModule, TuiLinkModule} from "@taiga-ui/core";
 import {TuiInputModule, TuiInputDateTimeModule, TuiInputNumberModule, TuiFieldErrorPipeModule, TuiAccordionModule} from '@taiga-ui/kit';
 import {TuiTableModule} from '@taiga-ui/addon-table';
 
@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { RouterOutlet } from "@angular/router";
+import { RouterOutlet, RouterLink } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 
 import { HttpService } from "./http.service";
@@ -24,6 +24,7 @@ import { ViewTournamentComponent } from "./view-tournament.component";
     BrowserModule,
     AppRoutingModule,
     RouterOutlet,
+    RouterLink,
     BrowserAnimationsModule,
     HttpClientModule,
 

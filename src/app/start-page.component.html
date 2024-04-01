@@ -1,99 +1,101 @@
-<div class="startPage">
-    <h3>Популярные турниры:</h3>
-    <table
-        tuiTable
-        class="table"
-        [columns]="columns"
-    >
-        <thead>
-            <tr tuiThGroup>
-                <th
-                    tuiTh
-                    [resizable]="true"
-                >
-                    Название
-                </th>
-                <th 
-                    tuiTh 
-                    [resizable]="true"
-                >
-                    Описание
-                </th>
-                <th 
-                    tuiTh 
-                    [resizable]="true"
-                >
-                    Начало
-                </th>
-                <th 
-                    tuiTh 
-                    [resizable]="true"
-                >
-                    Призовой фонд
-                </th>
-                <th 
-                    tuiTh 
-                    [resizable]="true"
-                >
-                    Кол-во участников
-                </th>
-            </tr>
-        </thead>
-        <tbody
-            tuiTbody
+<tui-root>
+    <div class="startPage">
+        <h3>Популярные турниры:</h3>
+        <table
+            tuiTable
+            class="table"
+            [columns]="columns"
         >
-            <tr
-                *ngFor="let tournament of tournaments"
-                tuiTr
-            >
-                <td
-                    *tuiCell="'name'"
-                    tuiTd
-                >
-                    <a
-                        routerLink="/open"
-                        tuiLink
-                        (click)="createTreeList(8)"
+            <thead>
+                <tr tuiThGroup>
+                    <th
+                        tuiTh
+                        [resizable]="true"
                     >
-                        {{ tournament.name }}
-                    </a>
-                </td>
-                <td
-                    *tuiCell="'description'"
-                    tuiTd
+                        Название
+                    </th>
+                    <th 
+                        tuiTh 
+                        [resizable]="true"
+                    >
+                        Описание
+                    </th>
+                    <th 
+                        tuiTh 
+                        [resizable]="true"
+                    >
+                        Начало
+                    </th>
+                    <th 
+                        tuiTh 
+                        [resizable]="true"
+                    >
+                        Призовой фонд
+                    </th>
+                    <th 
+                        tuiTh 
+                        [resizable]="true"
+                    >
+                        Кол-во участников
+                    </th>
+                </tr>
+            </thead>
+            <tbody
+                tuiTbody
+            >
+                <tr
+                    *ngFor="let tournament of tournaments"
+                    tuiTr
                 >
-                    {{ tournament.description }}
-                </td>
-                <td
-                    *tuiCell="'dateTime'"
-                    tuiTd
-                >
-                    {{ tournament.dateTime }}
-                </td>
-                <td
-                    *tuiCell="'prizeFund'"
-                    tuiTd
-                >
-                    {{ tournament.prizeFund + " ₽" }}
-                </td>
-                <td
-                    *tuiCell="'countPlayers'"
-                    tuiTd
-                >
-                    {{ tournament.countPlayers.toString() + " / " + tournament.maxPlayers.toString() }}
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p>
-        <button
-            tuiButton
-            type="button"
-            class="tui-space_right-3 tui-space_bottom-3"    
-            routerLink="/create"
-        >
-        Создать свой турнир
-        </button>
-    </p>
-</div>
+                    <td
+                        *tuiCell="'name'"
+                        tuiTd
+                    >
+                        <a
+                            routerLink="/open"
+                            tuiLink
+                            (click)="saveIdTournament(tournament.id)"
+                        >
+                            {{ tournament.name }}
+                        </a>
+                    </td>
+                    <td
+                        *tuiCell="'description'"
+                        tuiTd
+                    >
+                        {{ tournament.description }}
+                    </td>
+                    <td
+                        *tuiCell="'dateTime'"
+                        tuiTd
+                    >
+                        {{ tournament.dateTime }}
+                    </td>
+                    <td
+                        *tuiCell="'prizeFund'"
+                        tuiTd
+                    >
+                        {{ tournament.prizeFund + " ₽" }}
+                    </td>
+                    <td
+                        *tuiCell="'countPlayers'"
+                        tuiTd
+                    >
+                        {{ tournament.countPlayers.toString() + " / " + tournament.maxPlayers.toString() }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <p>
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_right-3 tui-space_bottom-3"    
+                routerLink="/create"
+            >
+            Создать свой турнир
+            </button>
+        </p>
+    </div>
+</tui-root>

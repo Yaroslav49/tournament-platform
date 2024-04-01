@@ -1,24 +1,28 @@
 <div class="viewTournamentBlock">
     <h1>
-        {{ nameTournament }}
+        {{ tournamentInfo.name }}
     </h1>
     <h3>
-        {{ description }}
+        {{ tournamentInfo.description }}
     </h3>
     <h3>
-        Начало: {{ datetime }}
+        Начало: {{ tournamentInfo.dateTime }}
     </h3>
     <tui-accordion class="container">
         <tui-accordion-item>
           Участники
           <ng-template tuiAccordionItemContent>
-            <ol>
+
+            <ol *ngIf="tournamentInfo.participants">
                 <li
-                    *ngFor="let participant of participants; let i = index"
+                    *ngFor="let participant of tournamentInfo.participants; let i = index"
                 >
                     {{i + 1}}. {{participant}}
                 </li>
             </ol>
+            <div *ngIf="!tournamentInfo.participants">
+                В турнире пока нет участников. Станьте первым!
+            </div>
           </ng-template>
         </tui-accordion-item>
         <tui-accordion-item>
@@ -52,18 +56,20 @@
     <h3>
         Добавить участника:
     </h3>
-    <p>
+    <form class="b-form" [formGroup]="inputForm">
         <tui-input formControlName="newParticipant"
-        >
-            Имя
-        </tui-input>
-    </p>
+    >
+        Имя
+    </tui-input>
+    </form>
     <p>
         <button
+            *ngIf="this.inputForm.controls['newParticipant'].value != ''"
             tuiButton
             type="button"
             icon="tuiIconPlus"
             class="tui-space_right-3 tui-space_bottom-3"
+            (click)="addParticipant()"
             >
             Добавить
         </button>
