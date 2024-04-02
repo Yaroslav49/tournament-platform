@@ -49,7 +49,7 @@ export class ViewTournamentComponent implements OnInit {
 	}*/
 
 	addParticipant(): void {
-		this.httpService.postParticipant(this.tournamentInfo.id, this.inputForm.controls["newParticipant"].value)
+		this.httpService.postParticipant(this.tournamentInfo.id, String(this.inputForm.controls["newParticipant"].value))
 		.subscribe({
 			next:(data: any) => {
 				console.log("fantastic!");

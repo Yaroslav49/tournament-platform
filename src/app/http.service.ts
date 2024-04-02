@@ -21,12 +21,12 @@ export class HttpService{
             return data.map(function(tournament: any): Tournament {
                 return new Tournament(
                     tournament.id,
-                    tournament.nameTournament, 
-                    tournament.descTournament, 
-                    tournament.poolTournament, 
-                    tournament.players == null ? 0 : tournament.players.length,
+                    tournament.nameTournament,
+                    tournament.descTournament,
+                    (tournament.poolTournament == null) ? 0 : tournament.poolTournament,
+                    (tournament.players == null) ? 0 : tournament.players.length,
+                    (tournament.maxPlayersTournament == null) ? 0 : tournament.maxPlayersTournament,
                     tournament.password,
-                    tournament.maxPlayersTournament,
                     tournament.players,
                     tournament.matches
                 );
@@ -36,17 +36,17 @@ export class HttpService{
 
     getTournamentById(id: number): Observable<Tournament>{
         return this.http.get("https://mammal-ace-snipe.ngrok-free.app/api/tournaments/" + id, {'headers': this.headers}).pipe(map((tournament:any)=>{
-                return new Tournament(
-                    tournament.id,
-                    tournament.nameTournament,
-                    tournament.descTournament,
-                    tournament.poolTournament,
-                    tournament.players == null ? 0 : tournament.players.length,
-                    tournament.password,
-                    tournament.maxPlayersTournament,
-                    tournament.players,
-                    tournament.matches
-                );
+            return new Tournament(
+                tournament.id,
+                tournament.nameTournament,
+                tournament.descTournament,
+                (tournament.poolTournament == null) ? 0 : tournament.poolTournament,
+                (tournament.players == null) ? 0 : tournament.players.length,
+                (tournament.maxPlayersTournament == null) ? 0 : tournament.maxPlayersTournament,
+                tournament.password,
+                tournament.players,
+                tournament.matches
+            );
         }));
     }
 
@@ -56,16 +56,17 @@ export class HttpService{
             descTournament: tournament.description,
             poolTournament: tournament.prizeFund, 
             maxPlayersTournament: tournament.maxPlayers,
+            password: tournament.password,
         };
         return this.http.post("https://mammal-ace-snipe.ngrok-free.app/api/tournaments", body, {'headers': this.headers}).pipe(map((tournament:any)=>{
             return new Tournament(
                 tournament.id,
                 tournament.nameTournament,
                 tournament.descTournament,
-                tournament.poolTournament,
-                tournament.players == null ? 0 : tournament.players.length,
+                (tournament.poolTournament == null) ? 0 : tournament.poolTournament,
+                (tournament.players == null) ? 0 : tournament.players.length,
+                (tournament.maxPlayersTournament == null) ? 0 : tournament.maxPlayersTournament,
                 tournament.password,
-                tournament.maxPlayersTournament,
                 tournament.players,
                 tournament.matches
             );
@@ -74,7 +75,7 @@ export class HttpService{
 
     postParticipant(idTournament: number, nickname: String) {
         const body = {
-            nickname: nickname, 
+            nickname: nickname
         };
         return this.http.post("https://mammal-ace-snipe.ngrok-free.app/api/tournaments/" + idTournament + "/participants", body, {'headers': this.headers});
     }
